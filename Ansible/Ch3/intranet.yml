@@ -1,0 +1,23 @@
+---
+- name: Ensure firewalld is enabled and started
+  service
+     name: firewalld:
+     enabled: true
+     state: started
+
+---
+- name: Ensure firewalld is enabled and started
+  service:
+     name: firewalld:
+     enabled: true
+     state: started
+     
+- name: firewalld is configured to allow connections httpd service
+  firewalld: 
+     service: httpd
+     immediate: yes
+     permanent: yes
+     port: 8080
+     state: enabled
+  
+

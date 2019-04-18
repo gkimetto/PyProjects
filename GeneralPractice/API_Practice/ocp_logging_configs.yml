@@ -1,0 +1,31 @@
+
+
+
+common:
+    host_user: root
+    host_password: redhat
+    masters:
+         master1: dhcp-8-32-214.css.lab.eng.rdu2.redhat.com
+         master2: dhcp-8-33-52.css.lab.eng.rdu2.redhat.com 
+         master3: dhcp-8-32-188.css.lab.eng.rdu2.redhat.com
+    infras:
+         infra1: dhcp-8-32-194.css.lab.eng.rdu2.redhat.com
+         infra2: dhcp-8-32-224.css.lab.eng.rdu2.redhat.com
+         infra3: dhcp-8-32-174.css.lab.eng.rdu2.redhat.com 
+    lbs: 
+         lb1: selt-vm1.css.lab.eng.rdu2.redhat.com
+    computes:
+         compute1: dhcp-8-32-174.css.lab.eng.rdu2.redhat.com 
+         compute2: dhcp-8-33-153.css.lab.eng.rdu2.redhat.com
+         compute3: dhcp-8-32-196.css.lab.eng.rdu2.redhat.com
+         compute4: dhcp-8-32-130.css.lab.eng.rdu2.redhat.com   
+ 
+
+subscription:
+    rhn_user: ocpcns
+    rhn_password: scenario
+    
+registry:
+    rhvm_appliance_path: https://cfm-engine-4.css.lab.eng.rdu2.redhat.com  #https://rhhi-engine4.css.lab.eng.rdu2.redhat.com
+    storage_type: nfs #glusterfs # nfs3 #glusterfs
+    network_type: Static

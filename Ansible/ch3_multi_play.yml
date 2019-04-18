@@ -1,0 +1,126 @@
+
+# You should be able to construct and execute a playbook to manage configuration 
+# and perform administration on a managed host.
+#
+# Log in as the student user on workstation and run lab playbook setup. 
+# This setup script ensures that the managed host, servera, is reachable on 
+# the network. It also ensures that the correct Ansible configuration file 
+# and inventory are installed on the control node.
+#
+# [student@workstation ~]$ lab playbook setup
+# A developer responsible for your company's intranet web site has asked you 
+# to write a playbook to help automate the setup of the server environment 
+# on servera.lab.example.com.
+#
+# A working directory, /home/student/imp-playbook, has been created on 
+# workstation for the Ansible project. The directory has already been populated
+# with an ansible.cfg configuration file and an inventory inventory file. 
+# The managed host, servera.lab.example.com, is already defined in this 
+# inventory file.
+#
+# In this directory, create a playbook named intranet.yml which contains two 
+# plays. The first play requires privilege escalation and must perform the 
+# following tasks in the specified order:
+#
+# Use the yum module to ensure that the latest versions of the httpd and 
+# firewalld packages are installed.
+#
+# Ensure the firewalld service is enabled and started.
+#
+# Ensure that firewalld is configured to allow connections to the httpd service.
+#
+# Ensure that the httpd service is enabled and started.
+#
+# Ensure that the managed host's /var/www/html/index.html file consists of 
+# the content "Welcome to the example.com intranet!".
+#
+# The second play does not require privilege escalation and should run a single
+# task using the uri module to confirm that the 
+# URL http://servera.lab.example.com returns an HTTP status code of 200.
+#
+# Following recommended practices, plays and tasks should have names that 
+# document their purpose, but this is not required. The example solution names
+# plays and tasks.
+#
+# Don't forget that you can use the ansible-doc command to get help with finding 
+# and using the modules for your tasks.
+#
+# After the playbook is written, verify its syntax and then execute the playbook 
+# to implement the configuration. Verify your work by executing lab playbook 
+# grade.
+
+---
+
+#Log in as the student user on workstation and run lab playbook setup. 
+#This setup script ensures that the managed host, servera, is reachable on 
+#the network. It also ensures that the correct Ansible configuration file 
+#and inventory are installed on the control node.
+
+
+- name: Manage configure a host
+  hosts: localhost
+  tasks:
+    - name: Create the Ch3 directory
+      file: 
+         path: "/home/gkimetto/gk-sandbox/PYTHON/Ansible/Ch3"
+         owner: gkimetto
+         state: directory
+    - name: Run the lab playbook setup     
+      file:
+         path: "/home/gkimetto/gk-sandbox/PYTHON/Ansible/Ch3/playbook_setup.py"
+         state: touch
+    - name: Update the contents of the file
+      lineinfile: 
+         path: "/home/gkimetto/gk-sandbox/PYTHON/Ansible/Ch3/playbook_setup.py"
+         line: |
+          "A developer responsible for your company's intranet web 
+           site has asked you to write a playbook to help automate the 
+           setup of the server environment on servera.lab.example.com."
+         state: present
+         
+# In this directory, create a playbook named intranet.yml which contains two 
+# plays. The first play requires privilege escalation and must perform the 
+# following tasks in the specified order:
+
+# Ensure the firewalld service is enabled and started.
+#
+# Ensure that firewalld is configured to allow connections to the httpd service.
+#
+# Ensure that the httpd service is enabled and started.
+#
+# Ensure that the managed host's /var/www/html/index.html file consists of 
+# the content "Welcome to the example.com intranet!".
+
+    - name: create a playbook named intranet.yml
+      file: 
+        path: "/home/gkimetto/gk-sandbox/PYTHON/Ansible/Ch3/intranet.yml"
+        state: touch
+        
+    - name:     Populate the contents of the file
+      lineinfile:
+         path: "/home/gkimetto/gk-sandbox/PYTHON/Ansible/Ch3/intranet.yml"
+         line: |
+           ---
+           - name: latest version of httpd and firewalld installed
+             yum:
+               name:
+                 - firewalld
+                 - httpd
+                 
+               state: latest
+               
+           - name: Ensure firewalld is enabled and started
+             service:
+                name: firewalld:
+                enabled: true
+                state: started
+                
+           - name: firewalld is configured to allow connections httpd service
+             firewalld: 
+                service: httpd
+                immediate: yes
+                permanent: yes
+                port: 8080
+                state: enabled
+             
+         state: present

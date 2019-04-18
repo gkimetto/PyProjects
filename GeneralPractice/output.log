@@ -1,0 +1,6 @@
+User:gkimetto@redhat.com: 03/01/2019 01:32:41 PM: DEBUG: main: Line:21: This is a debug message
+User:gkimetto@redhat.com: 03/01/2019 01:32:41 PM: INFO: main: Line:22: This is a Information mesage
+User:gkimetto@redhat.com: 03/01/2019 01:32:41 PM: WARNING: main: Line:23: This is a Warning message
+User:gkimetto@redhat.com: 03/01/2019 01:32:41 PM: ERROR: main: Line:24: This is an Error Message
+User:gkimetto@redhat.com: 03/01/2019 01:32:41 PM: CRITICAL: main: Line:25: THis is a critical message- DO NOT IGNORE
+User:gkimetto@redhat.com: 03/01/2019 01:32:41 PM: INFO: main: Line:28: Here is a string variable and an 10

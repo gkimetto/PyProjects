@@ -1,0 +1,5 @@
+---
+#
+- name: List all playbooks 
+  hosts: all
+  

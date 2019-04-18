@@ -1,0 +1,10 @@
+'''Python Loops'''
+
+import math, json, collections, itertools
+import numpy as np
+import matplotlib.pyplot as pp
+
+%matplotlib inline
+
+from mp1_toolkits.basemap import Basemap
+import  geopy

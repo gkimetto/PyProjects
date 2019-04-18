@@ -1,0 +1,7 @@
+{
+  "pyest_sample.py::test_answer": true, 
+  "test_class.py::TestClass::()::test_mytest": true, 
+  "test_class.py::TestClass::()::test_needsfiles": true, 
+  "test_class.py::TestClass::()::test_two": true, 
+  "test_sample.py::test_answer": true
+}
