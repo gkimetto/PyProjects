@@ -4,12 +4,21 @@ class Difference:
 
     # Add your code here
     def computeDifference(self):
-        count=0
-        for i in self.__elements:
-            tmp_num[0] = abs(i)
-            count+=1
+        diff_num=[]
+        if len(self.__elements)==1 :
+            print(self.__elements)
+            pass
+        else:
+            for i in self.__elements:
+                nxt_count=1
+                while(nxt_count<len(self.__elements)):
+                    nxt_num=abs(self.__elements[nxt_count])
+                    print(nxt_num)
+                    diff=abs(i-nxt_num)
+                    diff_num.append(diff)
+                    nxt_count+=1
             
-        maximumDifference = tmp_num[0]-tmp_num[2]
+        self.maximumDifference = max(diff_num)
         
 # End of Difference class
 
